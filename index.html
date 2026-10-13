@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="claro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Trivia Colombia: un juego web interactivo de preguntas y respuestas sobre geografía, historia, cultura, deportes y naturaleza de Colombia.">
+  <meta name="author" content="Estudiante UDES - Desarrollo Full Stack">
+  <title>Trivia Colombia – Juego de Preguntas</title>
+  
+  <!-- Favicon e ícono patrio -->
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  
+  <!-- Tipografía Google Fonts: Poppins y Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Hojas de estilo CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- Fondo decorativo con silueta y gradientes colombianos -->
+  <div class="decoracion-fondo" aria-hidden="true">
+    <div class="circulo-decorativo circulo-amarillo"></div>
+    <div class="circulo-decorativo circulo-azul"></div>
+    <div class="circulo-decorativo circulo-rojo"></div>
+  </div>
+
+  <!-- ENCABEZADO GLOBAL -->
+  <header class="cabecera-global">
+    <div class="contenedor cabecera-contenido">
+      <div class="logo-area" role="banner">
+        <img src="assets/img/logo.svg" alt="Logotipo oficial de Trivia Colombia" class="logo-img">
+      </div>
+      <nav class="controles-accesibilidad" aria-label="Ajustes de accesibilidad y preferencias">
+        <button id="btn-toggle-sonido" class="btn-icono" aria-label="Silenciar o activar sonido" title="Sonido (On/Off)">
+          <span id="icono-sonido" aria-hidden="true">🔊</span>
+        </button>
+        <button id="btn-toggle-tema" class="btn-icono" aria-label="Cambiar entre modo claro y oscuro" title="Modo Claro/Oscuro">
+          <span id="icono-tema" aria-hidden="true">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL / PANTALLAS DE LA APLICACIÓN -->
+  <main class="principal-contenedor">
+    <div class="contenedor">
+
+      <!-- ========================================================
+           1. PANTALLA DE INICIO
+           ======================================================== -->
+      <section id="pantalla-inicio" class="pantalla tarjeta-principal" aria-labelledby="titulo-inicio">
+        <div class="hero-inicio">
+          <div class="emblema-tricolor" aria-hidden="true">
+            <span class="franja franja-am"></span>
+            <span class="franja franja-az"></span>
+            <span class="franja franja-ro"></span>
+          </div>
+          <h1 id="titulo-inicio" class="titulo-destacado">¡Demuestra cuánto conoces a Colombia!</h1>
+          <p class="descripcion-inicio">
+            Pon a prueba tu conocimiento sobre nuestra geografía, historia, tradiciones, leyendas deportivas y asombrosa biodiversidad en rondas de 10 preguntas contra reloj.
+          </p>
+        </div>
+
+        <div class="formulario-inicio">
+          <label for="input-nombre-jugador" class="label-formulario">
+            ¿Cuál es tu nombre de jugador? <span class="requerido" aria-hidden="true">*</span>
+          </label>
+          <div class="input-grupo">
+            <span class="input-icono" aria-hidden="true">👤</span>
+            <input 
+              type="text" 
+              id="input-nombre-jugador" 
+              class="input-texto" 
+              placeholder="Ej. Sofía, Carlos, Mariana..." 
+              maxlength="25" 
+              autocomplete="name" 
+              required
+              aria-required="true"
+              aria-describedby="error-nombre-jugador"
+            >
+          </div>
+          <p id="error-nombre-jugador" class="mensaje-error oculto" role="alert"></p>
+
+          <div class="acciones-inicio">
+            <button id="btn-ir-configuracion" class="btn btn-primario btn-grande">
+              <span>¡Jugar Ahora!</span>
+              <span class="icono-flecha" aria-hidden="true">🚀</span>
+            </button>
+            <div class="acciones-secundarias">
+              <button id="btn-ver-instrucciones" class="btn btn-secundario">
+                <span>📖 Instrucciones y Reglas</span>
+              </button>
+              <button id="btn-ver-ranking" class="btn btn-secundario">
+                <span>🏆 Ranking & Estadísticas</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="caracteristicas-resumen" aria-hidden="true">
+          <div class="item-feat">
+            <span class="icono-feat">⏱️</span>
+            <span>20s por pregunta</span>
+          </div>
+          <div class="item-feat">
+            <span class="icono-feat">💡</span>
+            <span>Comodines 50/50 y +Tiempo</span>
+          </div>
+          <div class="item-feat">
+            <span class="icono-feat">🔥</span>
+            <span>Bonos por Racha</span>
+          </div>
+          <div class="item-feat">
+            <span class="icono-feat">💾</span>
+            <span>Ranking LocalStorage</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           2. PANTALLA DE INSTRUCCIONES
+           ======================================================== -->
+      <section id="pantalla-instrucciones" class="pantalla tarjeta-principal oculto" aria-labelledby="titulo-instrucciones" aria-hidden="true">
+        <div class="cabecera-pantalla">
+          <h2 id="titulo-instrucciones" class="subtitulo-seccion">Reglas del Juego y Puntuación</h2>
+          <p class="texto-apoyo">Aprende cómo acumular el máximo puntaje y conquistar la cima del Top 10 nacional.</p>
+        </div>
+
+        <div class="grid-instrucciones">
+          <div class="card-instruccion">
+            <div class="icono-ins">🎯</div>
+            <h3>Mecánica de Partida</h3>
+            <p>Cada ronda consta de <strong>10 preguntas de selección múltiple</strong>. Dispones de <strong>20 segundos</strong> para responder cada una. Si el tiempo expira, la pregunta se computa como incorrecta.</p>
+          </div>
+
+          <div class="card-instruccion">
+            <div class="icono-ins">💯</div>
+            <h3>Sistema de Puntos</h3>
+            <ul>
+              <li><strong>+100 pts</strong> por acierto.</li>
+              <li><strong>+5 pts</strong> por cada segundo restante en el temporizador (hasta +100 adicionales por rapidez).</li>
+              <li><strong>+50 pts</strong> de bono extra al completar una racha de 3 aciertos seguidos.</li>
+              <li>Multiplicador según dificultad: Fácil (x1), Medio (x1.5), Difícil (x2).</li>
+            </ul>
+          </div>
+
+          <div class="card-instruccion">
+            <div class="icono-ins">✨</div>
+            <h3>Comodines de Ayuda</h3>
+            <p>Puedes usarlos una sola vez por partida. Cada activación tiene un costo estratégico de <strong>-30 puntos</strong>:</p>
+            <ul>
+              <li><strong>50/50:</strong> Descarta al instante dos opciones incorrectas.</li>
+              <li><strong>+10s Tiempo:</strong> Otorga diez segundos adicionales en el reloj.</li>
+            </ul>
+          </div>
+
+          <div class="card-instruccion">
+            <div class="icono-ins">⌨️</div>
+            <h3>Atajos de Accesibilidad</h3>
+            <p>¡Juega velozmente sin soltar tu teclado!</p>
+            <ul>
+              <li>Teclas <strong>1, 2, 3, 4:</strong> Seleccionar opciones A, B, C o D.</li>
+              <li>Tecla <strong>C:</strong> Usar comodín 50/50.</li>
+              <li>Tecla <strong>T:</strong> Usar comodín de tiempo.</li>
+              <li><strong>Enter / Espacio:</strong> Avanzar a la siguiente pregunta.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acciones-centradas">
+          <button id="btn-volver-instrucciones" class="btn btn-secundario">
+            ⬅️ Volver al Inicio
+          </button>
+          <button id="btn-jugar-desde-instrucciones" class="btn btn-primario">
+            ¡Entendido, vamos a Jugar! 🚀
+          </button>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           3. PANTALLA DE CONFIGURACIÓN DE PARTIDA
+           ======================================================== -->
+      <section id="pantalla-configuracion" class="pantalla tarjeta-principal oculto" aria-labelledby="titulo-config" aria-hidden="true">
+        <div class="cabecera-pantalla">
+          <h2 id="titulo-config" class="subtitulo-seccion">Personaliza tu Desafío</h2>
+          <p class="texto-apoyo">Jugador activo: <strong id="nombre-jugador-config" class="nombre-destacado">Jugador</strong></p>
+        </div>
+
+        <!-- Selección de Categoría -->
+        <div class="bloque-configuracion">
+          <h3 class="label-bloque">1. Elige una Temática:</h3>
+          <div id="contenedor-categorias" class="grid-categorias" role="radiogroup" aria-label="Selección de categoría">
+            <!-- Renderizado dinámico desde ui.js -->
+          </div>
+          <div id="record-categoria-texto" class="record-preview" role="status">
+            <!-- Récord previo renderizado aquí -->
+          </div>
+        </div>
+
+        <!-- Selección de Dificultad -->
+        <div class="bloque-configuracion">
+          <h3 class="label-bloque">2. Nivel de Dificultad:</h3>
+          <div class="selector-dificultades" role="radiogroup" aria-label="Nivel de dificultad">
+            <label class="opcion-dificultad dif-facil">
+              <input type="radio" name="dificultad" value="facil">
+              <span class="dificultad-caja">
+                <span class="dif-titulo">Fácil</span>
+                <span class="dif-mult">x1.0 Multiplicador</span>
+                <span class="dif-desc">Preguntas introductorias y fundamentales.</span>
+              </span>
+            </label>
+
+            <label class="opcion-dificultad dif-medio">
+              <input type="radio" name="dificultad" value="medio" checked>
+              <span class="dificultad-caja">
+                <span class="dif-titulo">Medio</span>
+                <span class="dif-mult">x1.5 Multiplicador</span>
+                <span class="dif-desc">Equilibrio perfecto de desafío y cultura general.</span>
+              </span>
+            </label>
+
+            <label class="opcion-dificultad dif-dificil">
+              <input type="radio" name="dificultad" value="dificil">
+              <span class="dificultad-caja">
+                <span class="dif-titulo">Difícil</span>
+                <span class="dif-mult">x2.0 Multiplicador</span>
+                <span class="dif-desc">Solo para verdaderos eruditos de Colombia.</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="acciones-centradas">
+          <button id="btn-volver-configuracion" class="btn btn-secundario">
+            ⬅️ Cambiar Nombre
+          </button>
+          <button id="btn-comenzar-partida" class="btn btn-primario btn-grande">
+            ¡Comenzar Partida! 🎮
+          </button>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           4. PANTALLA DE JUEGO (PREGUNTA ACTIVA)
+           ======================================================== -->
+      <section id="pantalla-juego" class="pantalla tarjeta-juego oculto" aria-labelledby="enunciado-pregunta" aria-hidden="true">
+        <!-- Barra superior del juego -->
+        <div class="barra-superior-juego">
+          <div class="progreso-contenedor">
+            <div class="info-progreso-texto">
+              <span id="texto-progreso" class="texto-progreso">Pregunta 1 de 10</span>
+              <div class="badges-juego">
+                <span id="tag-categoria-juego" class="badge-tag">Geografía</span>
+                <span id="tag-dificultad-juego" class="badge-dificultad dificultad-medio">MEDIO</span>
+              </div>
+            </div>
+            <div class="barra-progreso-track" role="progressbar" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1">
+              <div id="barra-progreso-fill" class="barra-progreso-fill"></div>
+            </div>
+          </div>
+
+          <div class="marcadores-juego">
+            <div class="marcador-item puntaje-box">
+              <span class="marcador-label">Puntaje</span>
+              <span id="puntaje-actual-texto" class="marcador-valor">0</span>
+            </div>
+            <div id="badge-racha" class="marcador-item racha-box oculto">
+              <span class="marcador-label">Racha</span>
+              <span id="texto-racha" class="marcador-valor">3x 🔥</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel central: Temporizador y Enunciado -->
+        <div class="zona-pregunta">
+          <div class="temporizador-caja" aria-label="Tiempo restante para responder">
+            <svg class="timer-svg" viewBox="0 0 80 80">
+              <circle class="timer-svg-bg" cx="40" cy="40" r="36"></circle>
+              <circle id="timer-svg-circle" class="timer-svg-progress" cx="40" cy="40" r="36"></circle>
+            </svg>
+            <div class="timer-texto-centro">
+              <span id="tiempo-restante-numero" class="timer-segundos">20</span>
+              <span class="timer-s">s</span>
+            </div>
+          </div>
+
+          <h2 id="enunciado-pregunta" class="enunciado-texto">
+            ¿Cuál es la capital del departamento de Santander?
+          </h2>
+        </div>
+
+        <!-- 4 Opciones de respuesta -->
+        <div id="contenedor-opciones" class="grid-opciones" role="group" aria-label="Opciones de respuesta">
+          <!-- Renderizado dinámicamente con UI.renderizarPregunta -->
+        </div>
+
+        <!-- Barra de comodines -->
+        <div class="barra-comodines" aria-label="Comodines disponibles">
+          <span class="comodines-titulo">Comodines (-30 pts c/u):</span>
+          <div class="grupo-botones-comodin">
+            <button id="btn-comodin-5050" class="btn-comodin" aria-label="Usar comodín 50/50: descarta dos opciones incorrectas (-30 puntos)">
+              <span class="icono-comodin" aria-hidden="true">🌓</span>
+              <span class="texto-btn-comodin">50 / 50</span>
+            </button>
+            <button id="btn-comodin-tiempo" class="btn-comodin" aria-label="Usar comodín de tiempo: suma 10 segundos adicionales (-30 puntos)">
+              <span class="icono-comodin" aria-hidden="true">⏱️</span>
+              <span class="texto-btn-comodin">+10 Segundos</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Panel de Retroalimentación Inmediata -->
+        <div id="caja-feedback" class="caja-feedback oculto" role="region" aria-live="assertive">
+          <div class="feedback-encabezado">
+            <span id="icono-feedback" class="feedback-icono" aria-hidden="true">🎉</span>
+            <div class="feedback-textos">
+              <h3 id="titulo-feedback" class="feedback-titulo">¡Respuesta Correcta!</h3>
+              <span id="puntos-ganados-feedback" class="feedback-puntos">+150 pts</span>
+            </div>
+          </div>
+          <p id="explicacion-feedback" class="feedback-explicacion">
+            Bucaramanga es la capital de Santander y es conocida nacionalmente como la Ciudad Bonita.
+          </p>
+          <div class="feedback-accion">
+            <button id="btn-siguiente-pregunta" class="btn btn-primario btn-ancho">
+              Siguiente Pregunta ➡️
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+           5. PANTALLA DE RESULTADOS
+           ======================================================== -->
+      <section id="pantalla-resultado" class="pantalla tarjeta-principal oculto" aria-labelledby="titulo-resultado" aria-hidden="true">
+        <div class="resultado-hero">
+          <div id="resultado-emoji" class="resultado-emoji" aria-hidden="true">🏆</div>
+          <h2 id="titulo-resultado" class="subtitulo-seccion">¡Partida Completada!</h2>
+          <p class="resultado-saludo">Gran esfuerzo, <strong id="resultado-jugador">Jugador</strong>.</p>
+          <p id="resultado-mensaje" class="resultado-mensaje-desempeno">
+            ¡Excelente patriota! Tienes un conocimiento impecable sobre Colombia.
+          </p>
+          
+          <div class="puntaje-final-caja">
+            <span class="label-puntaje-final">Puntaje Final</span>
+            <span id="resultado-puntaje" class="valor-puntaje-final">1.450 pts</span>
+          </div>
+
+          <div id="resultado-badge-ranking" class="badge-ranking-exito oculto" role="status">
+            <!-- Insignia si entra al Top 10 -->
+          </div>
+        </div>
+
+        <!-- Métricas resumidas de la partida -->
+        <div class="grid-resumen-metricas">
+          <div class="metrica-item">
+            <span class="metrica-icono" aria-hidden="true">🎯</span>
+            <span class="metrica-valor" id="resultado-aciertos">9 / 10</span>
+            <span class="metrica-label">Aciertos</span>
+          </div>
+          <div class="metrica-item">
+            <span class="metrica-icono" aria-hidden="true">📊</span>
+            <span class="metrica-valor" id="resultado-porcentaje">90%</span>
+            <span class="metrica-label">Efectividad</span>
+          </div>
+          <div class="metrica-item">
+            <span class="metrica-icono" aria-hidden="true">⏱️</span>
+            <span class="metrica-valor" id="resultado-tiempo">64 seg</span>
+            <span class="metrica-label">Tiempo Total</span>
+          </div>
+          <div class="metrica-item">
+            <span class="metrica-icono" aria-hidden="true">🔥</span>
+            <span class="metrica-valor" id="resultado-mejor-racha">5 seguidas</span>
+            <span class="metrica-label">Mejor Racha</span>
+          </div>
+          <div class="metrica-item">
+            <span class="metrica-icono" aria-hidden="true">💡</span>
+            <span class="metrica-valor" id="resultado-comodines">1 usados</span>
+            <span class="metrica-label">Comodines</span>
+          </div>
+        </div>
+
+        <!-- Revisión de preguntas respondidas -->
+        <div class="seccion-revision-respuestas">
+          <button id="btn-ver-revision-falladas" class="btn btn-outline btn-ancho">
+            Ver Revisión de Preguntas ▼
+          </button>
+          <div id="contenedor-revision-falladas" class="contenedor-revision oculto">
+            <div id="lista-revision-preguntas" class="lista-preguntas-rev">
+              <!-- Renderizado dinámicamente -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Botones finales -->
+        <div class="acciones-centradas botones-resultado">
+          <button id="btn-jugar-de-nuevo" class="btn btn-primario">
+            🔄 Jugar de Nuevo
+          </button>
+          <button id="btn-resultado-ver-ranking" class="btn btn-secundario">
+            🏆 Ver Ranking General
+          </button>
+          <button id="btn-volver-inicio" class="btn btn-outline">
+            🏠 Volver al Inicio
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========================================================
+       MODAL DE RANKING Y ESTADÍSTICAS (ACCESIBLE)
+       ======================================================== -->
+  <div id="modal-ranking" class="modal-backdrop oculto" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-ranking" aria-hidden="true">
+    <div class="modal-contenido tarjeta-modal">
+      <div class="modal-cabecera">
+        <h3 id="titulo-modal-ranking" class="modal-titulo">Salón de la Fama y Estadísticas</h3>
+        <button id="btn-cerrar-modal" class="btn-cerrar" aria-label="Cerrar modal">&times;</button>
+      </div>
+
+      <!-- Navegación por pestañas -->
+      <div class="modal-tabs" role="tablist">
+        <button id="tab-btn-ranking" class="tab-btn activo" role="tab" aria-selected="true" aria-controls="panel-ranking">
+          🏆 Top 10 Ranking
+        </button>
+        <button id="tab-btn-stats" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-stats">
+          📈 Estadísticas Históricas
+        </button>
+      </div>
+
+      <!-- Panel 1: Ranking Top 10 -->
+      <div id="panel-ranking" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-ranking">
+        <div class="tabla-responsive">
+          <table class="tabla-ranking">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Jugador</th>
+                <th scope="col">Puntaje</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Fecha</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-ranking">
+              <!-- Filas dinámicas -->
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-pie-acciones">
+          <button id="btn-limpiar-ranking" class="btn btn-peligro-outline">
+            🗑️ Borrar Ranking Local
+          </button>
+        </div>
+      </div>
+
+      <!-- Panel 2: Estadísticas Globales -->
+      <div id="panel-stats" class="tab-panel oculto" role="tabpanel" aria-labelledby="tab-btn-stats">
+        <div id="stats-contenedor">
+          <!-- Renderizado dinámico -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIE DE PÁGINA INSTITUCIONAL -->
+  <footer class="pie-pagina-global">
+    <div class="contenedor pie-contenido">
+      <p><strong>Trivia Colombia</strong> – Proyecto Parcial de Desarrollo Full Stack</p>
+      <p>Universidad de Santander (UDES) • Docente: Carlos Carrascal</p>
+      <p><small>Desarrollado con HTML5 semántico, CSS3 moderno y JavaScript ES6+ modular sin dependencias.</small></p>
+    </div>
+  </footer>
+
+  <!-- Scripts modulares del proyecto (orden de dependencias respetado) -->
+  <script src="js/preguntas.js"></script>
+  <script src="js/almacenamiento.js"></script>
+  <script src="js/sonidos.js"></script>
+  <script src="js/juego.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
