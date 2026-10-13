@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototipo y Wireframes - Trivia Colombia</title>
+  <style>
+    :root {
+      --gris-100: #F1F5F9;
+      --gris-200: #E2E8F0;
+      --gris-400: #94A3B8;
+      --gris-600: #475569;
+      --gris-800: #1E293B;
+      --azul-udes: #003893;
+      --amarillo-col: #FCD116;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0F172A;
+      color: #F8FAFC;
+      line-height: 1.5;
+      padding: 2rem 1rem;
+    }
+    .contenedor {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 1.5rem;
+    }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #FFFFFF; }
+    p.sub { color: #94A3B8; font-size: 1.1rem; }
+    .badge-info {
+      display: inline-block;
+      background: rgba(0, 56, 147, 0.4);
+      border: 1px solid var(--azul-udes);
+      color: #93C5FD;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      margin-top: 0.75rem;
+    }
+    .panel-controles {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .btn-tab {
+      background: #1E293B;
+      color: #CBD5E1;
+      border: 1px solid #334155;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .btn-tab:hover { background: #334155; }
+    .btn-tab.activo {
+      background: var(--azul-udes);
+      color: #FFFFFF;
+      border-color: #3B82F6;
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    }
+    .seccion-vista { display: none; }
+    .seccion-vista.activa { display: block; }
+    
+    /* Grid de Wireframes (Escala de Grises) */
+    .grid-wireframes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+    .tarjeta-wf {
+      background: #FFFFFF;
+      color: #1E293B;
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+    }
+    .tarjeta-wf h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+      color: #0F172A;
+      display: flex;
+      justify-content: space-between;
+    }
+    .badge-wf {
+      background: #E2E8F0;
+      color: #475569;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+    .desc-wf {
+      font-size: 0.85rem;
+      color: #64748B;
+      margin-bottom: 1rem;
+    }
+    .marco-pantalla {
+      border: 2px dashed #CBD5E1;
+      border-radius: 8px;
+      padding: 1rem;
+      background: #F8FAFC;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .bloque-placeholder {
+      background: #E2E8F0;
+      border-radius: 6px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #475569;
+    }
+    .bloque-placeholder.alto { height: 70px; }
+    .bloque-placeholder.circulo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin: 0 auto;
+    }
+    .filas-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+
+    /* Comparativa Escritorio vs Móvil */
+    .comparativa-view {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      background: #1E293B;
+      padding: 2rem;
+      border-radius: 16px;
+    }
+    .dispositivo-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .titulo-dispositivo {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #FCD116;
+    }
+    .preview-box {
+      width: 100%;
+      background: #F8FAFC;
+      border-radius: 12px;
+      padding: 1.5rem;
+      color: #0F172A;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .preview-box.movil {
+      max-width: 375px;
+      border: 8px solid #334155;
+      border-radius: 28px;
+      padding: 1rem;
+    }
+    .simulador-boton-jugar {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .btn-ir-juego {
+      display: inline-block;
+      background: #FCD116;
+      color: #0F172A;
+      font-weight: 700;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.2s;
+    }
+    .btn-ir-juego:hover {
+      background: #E5BD0E;
+      transform: translateY(-2px);
+    }
+    @media (max-width: 900px) {
+      .comparativa-view { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <header>
+      <h1>Documento de Diseño y Prototipado UX/UI</h1>
+      <p class="sub">Trivia Colombia – Juego de Preguntas (Entregable Sección 7 y 17.1)</p>
+      <div class="badge-info">Desarrollo Full Stack • UDES • Docente: Carlos Carrascal</div>
+    </header>
+
+    <div class="panel-controles">
+      <button class="btn-tab activo" onclick="cambiarVista('wireframes')">📐 Wireframes (Baja Fidelidad)</button>
+      <button class="btn-tab" onclick="cambiarVista('comparativa')">📱 Comparativa Escritorio (1440px) vs Móvil (375px)</button>
+      <button class="btn-tab" onclick="cambiarVista('flujo')">🗺️ Flujo de Navegación del Jugador</button>
+    </div>
+
+    <!-- 1. VISTA WIREFRAMES DE BAJA FIDELIDAD -->
+    <div id="vista-wireframes" class="seccion-vista activa">
+      <div class="grid-wireframes">
+        <!-- 1. Inicio -->
+        <div class="tarjeta-wf">
+          <h3>1. Pantalla de Inicio <span class="badge-wf">WF-01</span></h3>
+          <p class="desc-wf">Captura de nombre, bienvenida y navegación principal.</p>
+          <div class="marco-pantalla">
+            <div class="bloque-placeholder">Logo e Insignia Nacional</div>
+            <div class="bloque-placeholder alto">Título y Descripción del Juego</div>
+            <div class="bloque-placeholder">Input: Nombre del Jugador</div>
+            <div class="bloque-placeholder" style="background:#CBD5E1; color:#0F172A;">[ Botón: Jugar Ahora ]</div>
+            <div class="filas-2">
+              <div class="bloque-placeholder">[ Instrucciones ]</div>
+              <div class="bloque-placeholder">[ Ranking ]</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Instrucciones -->
+        <div class="tarjeta-wf">
+          <h3>2. Instrucciones <span class="badge-wf">WF-02</span></h3>
+          <p class="desc-wf">Explicación de reglas, comodines y puntaje.</p>
+          <div class="marco-pantalla">
+            <div class="bloque-placeholder">Título de Reglas</div>
+            <div class="filas-2">
+              <div class="bloque-placeholder alto">Mecánica 10 Preguntas</div>
+              <div class="bloque-placeholder alto">Sistema +100pts / Rapidez</div>
+            </div>
+            <div class="filas-2">
+              <div class="bloque-placeholder alto">Comodines 50/50 y +10s</div>
+              <div class="bloque-placeholder alto">Atajos Teclado 1-4</div>
+            </div>
+            <div class="bloque-placeholder" style="background:#CBD5E1;">[ Volver al Inicio ]</div>
+          </div>
+        </div>
+
+        <!-- 3. Configuración -->
+        <div class="tarjeta-wf">
+          <h3>3. Configuración de Partida <span class="badge-wf">WF-03</span></h3>
+          <p class="desc-wf">Selector de temática y selector de dificultad.</p>
+          <div class="marco-pantalla">
+            <div class="bloque-placeholder">Saludo al Jugador</div>
+            <div class="filas-2">
+              <div class="bloque-placeholder">Geografía</div>
+              <div class="bloque-placeholder">Historia</div>
+            </div>
+            <div class="filas-2">
+              <div class="bloque-placeholder">Cultura</div>
+              <div class="bloque-placeholder">Deportes</div>
+            </div>
+            <div class="bloque-placeholder">Ciencia / Todas</div>
+            <div class="bloque-placeholder">Selector Dificultad (Fácil, Medio, Difícil)</div>
+            <div class="bloque-placeholder" style="background:#CBD5E1;">[ Iniciar Partida ]</div>
+          </div>
+        </div>
+
+        <!-- 4. Juego Activo -->
+        <div class="tarjeta-wf">
+          <h3>4. Pantalla de Juego <span class="badge-wf">WF-04</span></h3>
+          <p class="desc-wf">Pregunta activa, temporizador y 4 opciones.</p>
+          <div class="marco-pantalla">
+            <div class="filas-2">
+              <div class="bloque-placeholder">Progreso (1/10)</div>
+              <div class="bloque-placeholder">Puntaje / Racha</div>
+            </div>
+            <div class="bloque-placeholder circulo">20s</div>
+            <div class="bloque-placeholder alto">Enunciado de la Pregunta</div>
+            <div class="filas-2">
+              <div class="bloque-placeholder">Opción A</div>
+              <div class="bloque-placeholder">Opción B</div>
+            </div>
+            <div class="filas-2">
+              <div class="bloque-placeholder">Opción C</div>
+              <div class="bloque-placeholder">Opción D</div>
+            </div>
+            <div class="filas-2">
+              <div class="bloque-placeholder">[ Comodín 50/50 ]</div>
+              <div class="bloque-placeholder">[ Comodín +10s ]</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Retroalimentación -->
+        <div class="tarjeta-wf">
+          <h3>5. Retroalimentación <span class="badge-wf">WF-05</span></h3>
+          <p class="desc-wf">Respuesta validada y explicación inmediata.</p>
+          <div class="marco-pantalla">
+            <div class="bloque-placeholder alto" style="background:#DCFCE7; color:#166534;">
+              ¡Correcto! (+145 pts con bono rapidez)
+            </div>
+            <div class="bloque-placeholder alto">
+              Explicación contextual de la respuesta correcta.
+            </div>
+            <div class="bloque-placeholder" style="background:#CBD5E1;">
+              [ Botón: Siguiente Pregunta ]
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Resultado Final -->
+        <div class="tarjeta-wf">
+          <h3>6. Pantalla de Resultados <span class="badge-wf">WF-06</span></h3>
+          <p class="desc-wf">Puntaje final, aciertos y revisión detallada.</p>
+          <div class="marco-pantalla">
+            <div class="bloque-placeholder circulo">🏆</div>
+            <div class="bloque-placeholder alto">Puntaje Final: 1.450 pts</div>
+            <div class="filas-2">
+              <div class="bloque-placeholder">9/10 Aciertos</div>
+              <div class="bloque-placeholder">64s Empleados</div>
+            </div>
+            <div class="bloque-placeholder">[ Revisar Preguntas Falladas ▼ ]</div>
+            <div class="filas-2">
+              <div class="bloque-placeholder">[ Jugar de Nuevo ]</div>
+              <div class="bloque-placeholder">[ Ver Ranking ]</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Ranking -->
+        <div class="tarjeta-wf">
+          <h3>7. Modal Ranking & Stats <span class="badge-wf">WF-07</span></h3>
+          <p class="desc-wf">Top 10 en LocalStorage y estadísticas históricas.</p>
+          <div class="marco-pantalla">
+            <div class="filas-2">
+              <div class="bloque-placeholder">Pestaña: Top 10</div>
+              <div class="bloque-placeholder">Pestaña: Stats</div>
+            </div>
+            <div class="bloque-placeholder alto">
+              Tabla: # | Jugador | Pts | Categoría | Fecha
+            </div>
+            <div class="bloque-placeholder" style="background:#FEE2E2; color:#991B1B;">
+              [ Borrar Ranking Local ]
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. VISTA COMPARATIVA ESCRITORIO VS MÓVIL -->
+    <div id="vista-comparativa" class="seccion-vista">
+      <div class="comparativa-view">
+        <div class="dispositivo-col">
+          <h2 class="titulo-dispositivo">🖥️ Versión Escritorio (1440px)</h2>
+          <div class="preview-box">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #E2E8F0; padding-bottom:0.75rem; margin-bottom:1rem;">
+              <strong>TRIVIA COLOMBIA</strong>
+              <span>🔊 | 🌙</span>
+            </div>
+            <div style="background:#F1F5F9; padding:1.5rem; border-radius:12px; margin-bottom:1rem;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
+                <span>Pregunta 3 de 10</span>
+                <span>Puntaje: 320 pts</span>
+              </div>
+              <h3 style="margin-bottom:1rem; font-size:1.2rem;">¿Cuál es el río más largo de Colombia que recorre de sur a norte?</h3>
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem;">
+                <div style="padding:0.75rem; background:#FFF; border:1px solid #CBD5E1; border-radius:8px;">A) Río Cauca</div>
+                <div style="padding:0.75rem; background:#DCFCE7; border:2px solid #22C55E; border-radius:8px; font-weight:700;">B) Río Magdalena ✓</div>
+                <div style="padding:0.75rem; background:#FFF; border:1px solid #CBD5E1; border-radius:8px;">C) Río Amazonas</div>
+                <div style="padding:0.75rem; background:#FFF; border:1px solid #CBD5E1; border-radius:8px;">D) Río Sinú</div>
+              </div>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <small>Comodines: 50/50 | +10s</small>
+              <button style="background:#003893; color:#FFF; border:none; padding:0.5rem 1rem; border-radius:6px;">Siguiente Pregunta ➡️</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dispositivo-col">
+          <h2 class="titulo-dispositivo">📱 Versión Móvil (375px)</h2>
+          <div class="preview-box movil">
+            <div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:0.75rem;">
+              <strong>TRIVIA COL</strong>
+              <span>🔊 🌙</span>
+            </div>
+            <div style="text-align:center; margin-bottom:0.75rem;">
+              <small>Pregunta 3/10 • 320 pts</small>
+              <div style="width:40px; height:40px; border-radius:50%; background:#E2E8F0; margin:0.5rem auto; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.85rem;">15s</div>
+              <p style="font-size:0.9rem; font-weight:600;">¿Cuál es el río más largo de Colombia?</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0.4rem; font-size:0.85rem;">
+              <div style="padding:0.6rem; background:#FFF; border:1px solid #CBD5E1; border-radius:6px;">A) Río Cauca</div>
+              <div style="padding:0.6rem; background:#DCFCE7; border:2px solid #22C55E; border-radius:6px; font-weight:bold;">B) Río Magdalena ✓</div>
+              <div style="padding:0.6rem; background:#FFF; border:1px solid #CBD5E1; border-radius:6px;">C) Río Amazonas</div>
+              <div style="padding:0.6rem; background:#FFF; border:1px solid #CBD5E1; border-radius:6px;">D) Río Sinú</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. FLUJO DE NAVEGACIÓN -->
+    <div id="vista-flujo" class="seccion-vista">
+      <div style="background:#1E293B; padding:2rem; border-radius:16px;">
+        <h2 style="color:#FCD116; margin-bottom:1rem;">🗺️ Recorrido del Usuario (User Flow)</h2>
+        <ol style="margin-left:1.5rem; line-height:2; color:#CBD5E1;">
+          <li><strong>Inicio:</strong> El usuario escribe su nombre (validación en tiempo real). Opciones: Ir a Jugar, Ver Instrucciones o Ver Ranking.</li>
+          <li><strong>Configuración:</strong> Selecciona una categoría (5 categorías + "Todas") y la dificultad (Fácil x1, Medio x1.5, Difícil x2).</li>
+          <li><strong>Ronda de Juego:</strong> Responde 10 preguntas contra el reloj (20s). Puede usar comodines 50/50 o +10s.</li>
+          <li><strong>Feedback Inmediato:</strong> Visualiza si acertó, la explicación educativa y los puntos calculados.</li>
+          <li><strong>Resultados:</strong> Resumen global, cálculo de porcentaje, revisión de preguntas falladas y persistencia en LocalStorage.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="simulador-boton-jugar">
+      <a href="../../index.html" class="btn-ir-juego">🚀 Abrir Aplicación Interactiva en Vivo</a>
+    </div>
+  </div>
+
+  <script>
+    function cambiarVista(vista) {
+      document.querySelectorAll('.btn-tab').forEach(b => b.classList.remove('activo'));
+      document.querySelectorAll('.seccion-vista').forEach(v => v.classList.remove('activa'));
+      
+      if (vista === 'wireframes') {
+        document.querySelector("button[onclick=\"cambiarVista('wireframes')\"]").classList.add('activo');
+        document.getElementById('vista-wireframes').classList.add('activa');
+      } else if (vista === 'comparativa') {
+        document.querySelector("button[onclick=\"cambiarVista('comparativa')\"]").classList.add('activo');
+        document.getElementById('vista-comparativa').classList.add('activa');
+      } else if (vista === 'flujo') {
+        document.querySelector("button[onclick=\"cambiarVista('flujo')\"]").classList.add('activo');
+        document.getElementById('vista-flujo').classList.add('activa');
+      }
+    }
+  </script>
+</body>
+</html>
