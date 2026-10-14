@@ -3,7 +3,7 @@
 [![HTML5](https://img.shields.io/badge/HTML5-Semántico-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/es/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-Moderno%20%2B%20Variables-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/es/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B%20Modular-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/es/docs/Web/JavaScript)
-[![Vercel](https://img.shields.io/badge/Despliegue-Vercel-000000?logo=vercel&logoColor=white)](https://vercel.com)
+[![Vercel](https://img.shields.io/badge/Despliegue-Vercel-000000?logo=vercel&logoColor=white)](https://trivia-colombia-nu.vercel.app/)
 [![Licencia](https://img.shields.io/badge/Licencia-Educativa%20UDES-003893)](LICENSE)
 
 Proyecto desarrollado para el **Segundo Parcial de la Asignatura Desarrollo Full Stack** en la **Universidad de Santander (UDES)**, bajo la tutoría del docente **Carlos Carrascal**.
@@ -139,7 +139,7 @@ El proyecto está listo para su despliegue en la nube con **Vercel**:
 2. Selecciona la carpeta raíz del repositorio.
 3. El framework preset se detectará automáticamente como **Other** (HTML estático).
 4. Haz clic en **Deploy**.
-5. Tu URL pública estará activa inmediatamente: `https://trivia-colombia-udes.vercel.app`
+5. Tu URL pública estará activa inmediatamente: `https://trivia-colombia-nu.vercel.app/`
 
 ---
 
@@ -175,7 +175,7 @@ Para dar cumplimiento riguroso a la **Sección 17.4 del documento**:
 | :--- | :--- |
 | **Diseño (Figma / MockFlow)** | [Figma: Trivia Colombia](https://www.figma.com/design/KYYLyikCCjNkgyWIoomCrJ/Sin-t%C3%ADtulo?node-id=3-1521&t=qr1yn2kBIGjT7jMk-1) (o en `docs/diseno/`) |
 | **Repositorio en GitHub** | `https://github.com/JanerBus/trivia-colombia` |
-| **Despliegue en Vercel** | `https://trivia-colombia.vercel.app` |
+| **Despliegue en Vercel** | [https://trivia-colombia-nu.vercel.app/](https://trivia-colombia-nu.vercel.app/) |
 | **Video Explicativo** | `https://youtu.be/...` *(o enlace a Google Drive con acceso público)* |
 
 ---
