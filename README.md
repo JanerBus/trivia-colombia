@@ -119,7 +119,7 @@ trivia-colombia/
 ### Opción 1: Visual Studio Code con Live Server (Recomendada)
 1. Clona o descarga este repositorio en tu equipo:
    ```bash
-   git clone https://github.com/usuario/trivia-colombia.git
+   git clone https://github.com/JanerBus/trivia-colombia.git
    ```
 2. Abre la carpeta del proyecto en **Visual Studio Code**.
 3. Haz clic derecho sobre el archivo `index.html` y selecciona **«Open with Live Server»**.
@@ -174,7 +174,7 @@ Para dar cumplimiento riguroso a la **Sección 17.4 del documento**:
 | Entregable | Enlace / Ubicación |
 | :--- | :--- |
 | **Diseño (Figma / MockFlow)** | [Figma: Trivia Colombia](https://www.figma.com/design/KYYLyikCCjNkgyWIoomCrJ/Sin-t%C3%ADtulo?node-id=0-1&t=qr1yn2kBIGjT7jMk-1) (o en `docs/diseno/`) |
-| **Repositorio en GitHub** | `https://github.com/usuario/trivia-colombia` |
+| **Repositorio en GitHub** | `https://github.com/JanerBus/trivia-colombia` |
 | **Despliegue en Vercel** | `https://trivia-colombia.vercel.app` |
 | **Video Explicativo** | `https://youtu.be/...` *(o enlace a Google Drive con acceso público)* |
 
