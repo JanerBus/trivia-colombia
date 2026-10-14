@@ -148,7 +148,7 @@ El proyecto está listo para su despliegue en la nube con **Vercel**:
 En cumplimiento de las **Secciones 7 y 17.1**:
 - Consulta la **Guía de Estilos** completa en [`docs/diseno/guia-de-estilos.md`](docs/diseno/guia-de-estilos.md).
 - Abre el **Prototipo y Wireframes Navegables** en [`docs/diseno/prototipo-navegable.html`](docs/diseno/prototipo-navegable.html).
-- Enlace al tablero oficial de diseño en Figma: [Ver Proyecto en Figma](https://www.figma.com/design/KYYLyikCCjNkgyWIoomCrJ/Sin-t%C3%ADtulo?node-id=0-1&t=qr1yn2kBIGjT7jMk-1)
+- Enlace al tablero oficial de diseño en Figma: [Ver Proyecto en Figma](https://www.figma.com/design/KYYLyikCCjNkgyWIoomCrJ/Sin-t%C3%ADtulo?node-id=3-1521&t=qr1yn2kBIGjT7jMk-1)
 
 ---
 
@@ -161,7 +161,7 @@ Para dar cumplimiento riguroso a la **Sección 17.4 del documento**:
 | Minutos | Segmento | Contenido a Explicar |
 | :---: | :--- | :--- |
 | **0:00 – 0:30** | **Presentación** | Rostro visible, saludo formal, nombre del estudiante, materia (Desarrollo Full Stack - UDES), docente (Carlos Carrascal) y propósito del proyecto. |
-| **0:30 – 1:30** | **Recorrido por el Diseño** | Mostrar Figma ([enlace al tablero](https://www.figma.com/design/KYYLyikCCjNkgyWIoomCrJ/Sin-t%C3%ADtulo?node-id=0-1&t=qr1yn2kBIGjT7jMk-1)) o `docs/diseno/prototipo-navegable.html`: guía de estilos, paleta de colores, tipografías, wireframes y mockups responsive. |
+| **0:30 – 1:30** | **Recorrido por el Diseño** | Mostrar Figma ([enlace al tablero](https://www.figma.com/design/KYYLyikCCjNkgyWIoomCrJ/Sin-t%C3%ADtulo?node-id=3-1521&t=qr1yn2kBIGjT7jMk-1)) o `docs/diseno/prototipo-navegable.html`: guía de estilos, paleta de colores, tipografías, wireframes y mockups responsive. |
 | **1:30 – 2:30** | **Demostración en Vercel** | Demostración en vivo de la aplicación desplegada: ingreso de nombre, selección de categoría y dificultad, juego de preguntas, uso de comodines y visualización de resultados. |
 | **2:30 – 4:00** | **Explicación del Código** | Recorrido por el código fuente: estructura de `js/preguntas.js`, algoritmo Fisher-Yates en `js/juego.js`, temporizador con `setInterval`, sistema de puntuación y persistencia en `js/almacenamiento.js`. |
 | **4:00 – 4:30** | **Repositorio GitHub** | Mostrar el repositorio público en GitHub, la estructura de carpetas y el historial de commits frecuentes y descriptivos. |
@@ -173,7 +173,7 @@ Para dar cumplimiento riguroso a la **Sección 17.4 del documento**:
 
 | Entregable | Enlace / Ubicación |
 | :--- | :--- |
-| **Diseño (Figma / MockFlow)** | [Figma: Trivia Colombia](https://www.figma.com/design/KYYLyikCCjNkgyWIoomCrJ/Sin-t%C3%ADtulo?node-id=0-1&t=qr1yn2kBIGjT7jMk-1) (o en `docs/diseno/`) |
+| **Diseño (Figma / MockFlow)** | [Figma: Trivia Colombia](https://www.figma.com/design/KYYLyikCCjNkgyWIoomCrJ/Sin-t%C3%ADtulo?node-id=3-1521&t=qr1yn2kBIGjT7jMk-1) (o en `docs/diseno/`) |
 | **Repositorio en GitHub** | `https://github.com/JanerBus/trivia-colombia` |
 | **Despliegue en Vercel** | `https://trivia-colombia.vercel.app` |
 | **Video Explicativo** | `https://youtu.be/...` *(o enlace a Google Drive con acceso público)* |
