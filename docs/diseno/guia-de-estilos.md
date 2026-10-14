@@ -4,6 +4,7 @@
 > **Institución:** Universidad de Santander (UDES)  
 > **Docente:** Carlos Carrascal  
 > **Proyecto:** Trivia Colombia – Juego de Preguntas  
+> **Diseño Oficial en Figma:** [Abrir Tablero de Figma](https://www.figma.com/design/KYYLyikCCjNkgyWIoomCrJ/Sin-t%C3%ADtulo?node-id=0-1&t=qr1yn2kBIGjT7jMk-1)  
 > **Fecha:** Octubre de 2026  
 
 ---

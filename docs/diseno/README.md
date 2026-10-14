@@ -29,6 +29,6 @@ En cumplimiento estricto de la **Sección 7.1 y 17.1** del documento del parcial
 
 Para la entrega oficial en la plataforma del docente (Sección 17.5):
 
-- **Enlace de visualización Figma / MockFlow:**  
-  `https://www.figma.com/design/trivia-colombia-udes` *(o enlace proporcionado por el estudiante con permisos de lectura)*
+- **Enlace oficial de visualización en Figma:**  
+  [https://www.figma.com/design/KYYLyikCCjNkgyWIoomCrJ/Sin-t%C3%ADtulo?node-id=0-1&t=qr1yn2kBIGjT7jMk-1](https://www.figma.com/design/KYYLyikCCjNkgyWIoomCrJ/Sin-t%C3%ADtulo?node-id=0-1&t=qr1yn2kBIGjT7jMk-1)
 - **Permisos:** Visualización pública habilitada para el docente Carlos Carrascal.
